@@ -4,6 +4,7 @@ ARG VERSION=1.18.190
 ENV AWS_CLI_VERSION=$VERSION
 
 RUN apk --update --no-cache add \
+    openssh-client \
     python \
     py-pip \
     jq \
