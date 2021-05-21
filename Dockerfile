@@ -1,22 +1,14 @@
-FROM node:10-alpine
+FROM node:14
 
 ARG VERSION=1.18.190
 ENV AWS_CLI_VERSION=$VERSION
 
-RUN apk --update --no-cache add \
-    openssh-client \
-    python \
-    py-pip \
-    jq \
-    bash \
+RUN apt-get update && apt-get install -y openssh-client \
     git \
-    groff \
-    less \
-    mailcap \
-    bash \
+    python \
+    python-pip \
     && pip install --no-cache-dir awscli==$AWS_CLI_VERSION \
-    && apk del py-pip \
-    && rm -rf /var/cache/apk/* /root/.cache/pip/*
+    && rm -rf /root/.cache/pip/*
 
 WORKDIR /root
 VOLUME /root/.aws
