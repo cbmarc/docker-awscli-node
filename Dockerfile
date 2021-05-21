@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node:14-alpine
 
 ARG VERSION=1.18.190
 ENV AWS_CLI_VERSION=$VERSION
